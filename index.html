@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Planner and Cram Helper</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="alarm-banner" id="alarmBanner">
+        <div class="alarm-content">
+            <h2>STUDY ALARM RINGING</h2>
+            <p id="alarmText">Time to start your scheduled task.</p>
+            <button class="dismiss-btn" onclick="stopAlarm()">Dismiss Alarm and Start</button>
+        </div>
+    </div>
+
+    <div class="app-wrapper">
+        <header class="main-header">
+            <h1>My Study Planner App</h1>
+            <p class="subtitle">Course Project Workspace</p>
+        </header>
+
+        <section class="student-card manual-section">
+            <h2>Quick Single Reminder</h2>
+            <p class="card-desc">Set a basic reminder for a specific event or chore.</p>
+            
+            <div class="input-box">
+                <label>Event Name</label>
+                <input type="text" id="manualTitle" placeholder="e.g., Read Chapter 3, Buy coffee">
+            </div>
+            
+            <div class="input-box">
+                <label>Date and Time</label>
+                <input type="datetime-local" id="manualTime">
+            </div>
+            
+            <button class="action-btn" onclick="addManualReminder()">Set Reminder Alarm</button>
+        </section>
+
+        <section class="student-card generator-section">
+            <h2>Smart Cram-Schedule Generator</h2>
+            <p class="card-desc">Input your upcoming tasks. The algorithm will build your day based on task workload difficulty.</p>
+            
+            <div class="input-box">
+                <label>Task / Subject Title</label>
+                <input type="text" id="taskTitle" placeholder="e.g., Math Quiz, History Ppt">
+            </div>
+            
+            <div class="input-box">
+                <label>Workload Difficulty</label>
+                <select id="taskDifficulty">
+                    <option value="easy">Easy (30 mins)</option>
+                    <option value="medium">Medium (60 mins)</option>
+                    <option value="hard">Hard Mode / Core Focus (90 mins)</option>
+                </select>
+            </div>
+            
+            <button class="action-btn secondary" onclick="addTaskQueue()">Queue Up Task</button>
+            
+            <div class="list-title">Current Tasks To Sort:</div>
+            <div class="student-list" id="queueDisplay">No tasks added to the queue yet.</div>
+
+            <div class="input-box study-start">
+                <label>When do you want to start this study session?</label>
+                <input type="datetime-local" id="scheduleStartTime">
+            </div>
+            
+            <button class="generate-btn" onclick="generateSchedules()">Calculate Best Timelines</button>
+        </section>
+
+        <div id="scheduleOptionsContainer"></div>
+        
+        <section class="student-card alarms-section">
+            <h2>Active Alarm Tickers</h2>
+            <button onclick="clearAllAlarms()" style="background-color: #f38ba8; color: #11111b; margin-bottom: 10px; padding: 6px; font-size: 12px;">Clear All Alarms</button>
+            <div class="student-list active-alarms" id="activeAlarmsList">No active alarms running.</div>
+        </section>
+    </div>
+
+    <script src="capacitor.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
